@@ -1,0 +1,22 @@
+asecurity:
+    resource:
+        path: "../src/Controller/SecurityController.php"
+        namespace: App\Controller
+    type: attribute
+
+connect_google_check:
+    path: /login/google/check
+
+# controllers_back:
+#     resource:
+#         path: ../src/Controller/Back
+#         namespace: App\Controller\Back
+#     type: attribute
+#     name_prefix: back_
+#     prefix: /gestion/
+
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute

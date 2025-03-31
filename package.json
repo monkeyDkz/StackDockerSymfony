@@ -1,0 +1,24 @@
+{
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@hotwired/stimulus": "^3.0.0",
+    "@hotwired/turbo": "^7.1.1 || ^8.0",
+    "@symfony/stimulus-bridge": "^3.2.0",
+    "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/assets",
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.4.0",
+    "daisyui": "^4.12.22",
+    "file-loader": "^6.2.0",
+    "material-symbols": "^0.27.2",
+    "postcss": "^8.5.2",
+    "quill": "^2.0.3",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.3",
+    "vite-plugin-symfony": "^7.1.0"
+  }
+}

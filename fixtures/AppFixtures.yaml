@@ -1,0 +1,14 @@
+App\Entity\User:
+    admin:
+        email: 'admin\@eemi.com'
+        password: "password"
+        roles: ["ROLE_ADMIN"]
+        firstName: <firstName()>
+        lastName: <lastName()>
+    
+    user_{1..10}: # 10 users
+        email: 'user_<current()>\@eemi.com'
+        password: password
+        roles: ["ROLE_USER"]
+        firstName: <firstName()>
+        lastName: <lastName()>

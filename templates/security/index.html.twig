@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Liste des utilisateurs
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-2xl text-center font-bold text-black mb-8">
+        Listes des utilisateurs
+    </h1>
+
+    <table class="table max-w-full">
+        <thead class="">
+            <tr >
+                <th class="px-4 py-2">
+                    Id
+                </th>
+                <th class="px-4 py-2">
+                    Nom
+                </th>
+                <th class="px-4 py-2">
+                    Prénom
+                </th>
+                <th class="px-4 py-2">
+                    Rôle
+                </th>
+                <th class="px-4 py-2">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+
+                <tr>
+                    <div class="flex flex-row ">
+                        <td class="px-4 py-2 text-gray-700">
+                            {{ user.id }}
+                        </td>
+                        <td class="px-4 py-2 basis-1/6 text-gray-700">
+                            {{ user.lastname }}
+                        </td>
+                        <td class="px-4 py-2 basis-2/6 text-gray-700">
+                            {{ user.firstname }}
+                        </td>
+                        <td>
+                            <select class="select select-bordered w-full max-w-xs bg-white text-blue" data-href="{{ path("back_users_edit_role", {id: user.id, role: '__ROLE__'})}}">
+                                <option value="ROLE_USER"{% if (user.roles[0] == 'ROLE_USER') %} selected{% endif %}>Utilisateur</option>
+                                <option value="ROLE_ADMIN"{% if (user.roles[0] == 'ROLE_ADMIN') %} selected{% endif %}>Administrateur</option>
+                            </select>
+                        </td>
+                        <td class="px-4 py-2 basis-1/6">
+                            {% if(user.roles[0] == 'ROLE_USER') %}
+                            <div class="flex justify-center gap-4">
+                                <div>
+                                    {{ include('components/_delete_form.html.twig', {item: user, routeName: 'back_users_delete'}) }}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </td>
+                </tr>
+
+            {% else %}
+                <tr>
+                    <td class="px-4 py-2" colspan="6">
+                        no records found
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,30 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
+framework:
+    secret: "%env(APP_SECRET)%"
+    #csrf_protection: true
+    trusted_proxies: "private_ranges"
+    # trust *all* "X-Forwarded-*" headers
+    trusted_headers:
+        ["x-forwarded-for", "x-forwarded-proto", "x-forwarded-port"]
+
+    # Note that the session will be started ONLY if you read or write from it.
+    session: true
+
+    #esi: true
+    #fragments: true
+    assets:
+        version_strategy: 'Pentatrion\ViteBundle\Asset\ViteAssetVersionStrategy'
+
+    html_sanitizer:
+        sanitizers:
+            feed_sanitizer:
+                # enable either of these
+                allow_safe_elements: true
+                allow_static_elements: true
+                max_input_length: -1
+
+when@test:
+    framework:
+        test: true
+        session:
+            storage_factory_id: session.storage.factory.mock_file
